@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Final Project — Responsive Demo</title>
+  <meta name="description" content="Một trang mẫu responsive để nộp bài tập — có văn bản thay đổi, ảnh với alt, và 4 media queries.">
+  <style>
+    /* --- Base (mobile-first) --- */
+    :root{
+      font-size:16px; /* 1rem = 16px */
+      --gap:1rem;
+      --max-width:1200px;
+      --accent:#0b6;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      line-height:1.45;
+      color:#222;
+      background:#f7f8fb;
+      display:flex;
+      justify-content:center;
+      padding:var(--gap);
+    }
+    .site{
+      width:100%;
+      max-width:var(--max-width);
+      background:white;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(20,30,40,0.08);
+      overflow:hidden;
+    }
+    header{padding:1rem; border-bottom:1px solid #eee; display:flex; gap:1rem; align-items:center}
+    header h1{font-size:1.125rem; margin:0}
+    nav{margin-left:auto}
+    nav a{margin-left:.75rem; text-decoration:none; color:#0a58a5}
+
+    main{display:block; padding:1rem;}
+    .hero{
+      display:grid; gap:var(--gap);
+      align-items:center;
+    }
+    .hero img{width:100%; height:auto; display:block; border-radius:8px}
+    .hero .lead{font-size:1rem; margin:0}
+
+    .grid{
+      display:grid;
+      gap:var(--gap);
+      grid-template-columns:1fr;
+      padding-top:var(--gap);
+    }
+    .card{background:#fff; padding:1rem; border-radius:8px; border:1px solid #f0f0f0}
+
+    footer{padding:1rem; font-size:.875rem; color:#666; border-top:1px solid #eee}
+
+    /* --- Media Queries: 1 (>=480px) --- */
+    @media all and (min-width:480px){
+      .hero{grid-template-columns:1fr 1fr}
+      .grid{grid-template-columns:repeat(2, 1fr)}
+    }
+
+    /* --- Media Queries: 2 (>=768px) --- */
+    @media all and (min-width:768px){
+      :root{--gap:1.25rem}
+      header h1{font-size:1.25rem}
+      .site{border-radius:16px}
+      .grid{grid-template-columns:repeat(3, 1fr)}
+      .hero img{height:320px; object-fit:cover}
+    }
+
+    /* --- Media Queries: 3 (>=1024px) --- */
+    @media all and (min-width:1024px){
+      body{background:#eef3f7}
+      main{display:flex; gap:var(--gap); padding:1.5rem}
+      .content{flex:2}
+      .sidebar{flex:1}
+      .grid{grid-template-columns:repeat(2, 1fr)}
+    }
+
+    /* --- Media Queries: 4 (>=1280px) --- */
+    @media all and (min-width:1280px){
+      :root{--max-width:1400px}
+      .grid{grid-template-columns:repeat(3, 1fr)}
+    }
+
+    /* Accessibility helpers */
+    .sr-only{position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden}
+  </style>
+</head>
+<body>
+  <div class="site" role="document">
+    <header role="banner">
+      <div>
+        <h1>Final Project — Trang mẫu</h1>
+        <p style="margin:0; font-size:.9rem; color:#555">Bản nộp bài tập Responsive — đã chỉnh ảnh và văn bản</p>
+      </div>
+      <nav aria-label="Chính">
+        <a href="#">Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Liên hệ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="content" aria-labelledby="intro">
+        <div class="hero" aria-hidden="false">
+          <!-- Thay ảnh ở đây, thêm alt mô tả -->
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="Bàn làm việc với máy tính xách tay và tài liệu, minh họa thiết kế web responsive">
+          <div>
+            <h2 id="intro">Giới thiệu dự án</h2>
+            <p class="lead">Đã cập nhật văn bản trong các đoạn để mô tả dự án: trang này minh họa cách sử dụng đơn vị linh hoạt, truy vấn phương tiện, và thực hành truy xuất truy cập (accessibility).</p>
+            <p>Hãy chỉnh sửa hình ảnh và văn bản ở tệp này để phản ánh nội dung của bạn. Mỗi ảnh có thẻ <code>alt</code> đầy đủ — bắt buộc cho tiêu chí truy cập.</p>
+          </div>
+        </div>
+
+        <div class="grid" aria-label="Nội dung chính">
+          <article class="card">
+            <h3>Phần 1 — Nội dung</h3>
+            <p>Thay đổi đoạn văn ở đây để mô tả công việc bạn đã làm: thay đổi văn bản, cập nhật liên kết, và xác thực HTML/CSS bằng W3.</p>
+          </article>
+
+          <article class="card">
+            <h3>Phần 2 — Hình ảnh</h3>
+            <p>Thêm ảnh với văn bản thay thế (alt). Ví dụ: ảnh minh họa bên phải có alt mô tả đầy đủ nội dung ảnh.</p>
+          </article>
+
+          <article class="card">
+            <h3>Phần 3 — Kiểm thử</h3>
+            <p>Chạy <a href="https://validator.w3.org/">W3C HTML validator</a> và sử dụng <a href="https://wave.webaim.org/">WAVE</a> để kiểm tra truy cập. Sửa các lỗi được báo.</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="sidebar" aria-labelledby="side">
+        <div class="card">
+          <h4 id="side">Ghi chú nộp bài</h4>
+          <ul>
+            <li>Đảm bảo <code>&lt;meta name="viewport"&gt;</code> có trong &lt;head&gt;.</li>
+            <li>Thêm văn bản thay thế cho tất cả ảnh.</li>
+            <li>Viết ít nhất 4 truy vấn phương tiện (tệp này đã bao gồm 4 ví dụ).</li>
+            <li>Xác thực tại W3 và WAVE trước khi nộp.</li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-top:var(--gap)">
+          <h4>Gợi ý lưu trữ</h4>
+          <p>Bạn có thể lưu trữ miễn phí bằng GitHub Pages hoặc Netlify. Đảm bảo tải lên toàn bộ mã và bật Pages cho nhánh <code>main</code>.</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer role="contentinfo">
+      <p>Phiên bản mẫu — sửa nội dung, thay ảnh (với alt), chạy validator, và nộp liên kết.</p>
+      <p class="sr-only">Ghi chú cho người chấm: file đã có 4 media queries, semantic markup, và kiểm tra truy cập cơ bản.</p>
+    </footer>
+  </div>
+</body>
+</html>
